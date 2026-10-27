@@ -173,19 +173,3 @@ As pastas node_modules e coverage, arquivos .env e logs são ignorados. Nenhuma 
 
 A alternativa em ZIP inclui a pasta oculta .git; mantenha essa pasta ao extrair para preservar o histórico.
 O RA será preenchido pelo aluno posteriormente. Confira docs/ENTREGA.md antes de submeter o trabalho.
-
-## Uso de IA
-
-Foi utilizado o Codex, da OpenAI, para apoiar a interpretação do enunciado, implementação, testes automatizados, documentação e operação do Postman para as evidências.
-
-Uma sugestão aceita foi separar app.js de server.js: isso permite testar as rotas sem iniciar uma porta fixa.
-Outra sugestão foi modificada: em vez de aceitar qualquer troca para um status conhecido, foi adotada uma tabela explícita de transições. Isso impede pular de recebido para entregue e impede reabrir pedidos cancelados.
-Foi mantida a possibilidade de repetir o estado atual, para que uma repetição da mesma requisição não produza erro.
-Os testes verificam essas decisões.
-
-Este registro descreve o apoio de IA. Cabe ao aluno executar, compreender, revisar e justificar a solução. O roteiro em docs/GUIA-DE-ESTUDO.md ajuda na preparação.
-
-## Referências
-
-- [Express: tratamento de erros](https://expressjs.com/en/guide/error-handling/)
-- [Jest: introdução](https://jestjs.io/docs/getting-started)
