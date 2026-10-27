@@ -161,7 +161,7 @@ Não houve retrodatação de commits. Consulte git log --oneline para inspecion�
 Para publicar em um repositório vazio criado na conta do aluno:
 
 ~~~sh
-git remote add origin https://github.com/SEU_USUARIO/api-pedidos.git
+git remote add origin https://github.com/SEU_USUARIO/api-gerenciamento-pedidos.git
 git push -u origin main
 ~~~
 

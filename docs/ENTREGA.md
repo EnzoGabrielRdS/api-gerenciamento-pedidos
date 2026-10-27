@@ -1,6 +1,6 @@
 # Preparação da entrega
 
-O código, os testes e o histórico Git são locais. A publicação exige um repositório na conta escolhida para a entrega.
+O código, os testes e o histórico Git são locais. Nome definido para o repositório: api-gerenciamento-pedidos. A publicação exige acesso à conta escolhida para a entrega. O RA será preenchido pelo aluno posteriormente.
 
 1. Extraia o ZIP preservando a pasta oculta .git. Não use apenas "Upload files" do GitHub: isso não envia o histórico.
 2. Execute npm install, npm test e npm start.
