@@ -42,4 +42,4 @@ npx --yes newman@6.2.3 run postman/api-pedidos.postman_collection.json
 O Newman é uma ferramenta opcional para repetir a coleção; não substitui as capturas da interface do Postman.
 A execução adicional da coleção cria outros pedidos em memória. As capturas obrigatórias foram obtidas na sequência inicial documentada em evidencias/README.md.
 
-A publicação no GitHub e o RA dependem das informações do aluno; este relatório não afirma que houve publicação.
+Repositório da atividade: https://github.com/EnzoGabrielRdS/api-gerenciamento-pedidos. O RA será preenchido pelo aluno posteriormente.

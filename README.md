@@ -155,20 +155,24 @@ As capturas complementam os testes; o comportamento é verificável com entradas
 
 ## Git e GitHub
 
-O histórico local registra etapas reais de implementação, testes, documentação e evidências.
-Não houve retrodatação de commits. Consulte git log --oneline para inspecioná-los.
+Repositório da atividade: https://github.com/EnzoGabrielRdS/api-gerenciamento-pedidos
 
-Para publicar em um repositório vazio criado na conta do aluno:
+Para obter o projeto com o histórico:
 
 ~~~sh
-git remote add origin https://github.com/SEU_USUARIO/api-gerenciamento-pedidos.git
-git push -u origin main
+git clone https://github.com/EnzoGabrielRdS/api-gerenciamento-pedidos.git
+cd api-gerenciamento-pedidos
+npm install
+npm test
+npm start
 ~~~
 
-Se já existir um remote origin, confira git remote -v antes de alterá-lo.
-O arquivo ZIP da entrega inclui a pasta oculta .git; extraia o ZIP mantendo essa pasta para preservar o histórico.
+O histórico registra etapas reais de implementação, testes, documentação e evidências.
+Não houve retrodatação de commits. Consulte git log --oneline para inspecioná-los.
 As pastas node_modules e coverage, arquivos .env e logs são ignorados. Nenhuma credencial faz parte do projeto.
-Antes de entregar, informe o RA e o link real do repositório conforme o roteiro em docs/ENTREGA.md.
+
+A alternativa em ZIP inclui a pasta oculta .git; mantenha essa pasta ao extrair para preservar o histórico.
+O RA será preenchido pelo aluno posteriormente. Confira docs/ENTREGA.md antes de submeter o trabalho.
 
 ## Uso de IA
 
