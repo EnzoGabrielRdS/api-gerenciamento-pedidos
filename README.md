@@ -1,5 +1,13 @@
 # API de gerenciamento de pedidos
 
+CONTRIBUIDORES DO PROJETO : 
+
+ENZO GABRIEL RODRIGUES DA SILVA COSTA [ RA : 43045774 ] 
+MATHEUS GABRIEL FERREIRA SILVA  [ RA : 43040624 ] 
+ROGER CARLOS DE ANDRADE [ RA : 42819911 ] 
+CAIO VENTURA SANTANA [ RA : 43617883 ] 
+MATHEUS DA SILVA PALMEIRA [ RA : 42206723 ] 
+
 API REST acadêmica em JavaScript, Node.js e Express, com arquitetura em camadas e armazenamento em memória.
 
 ## Instalação e execução
@@ -67,24 +75,6 @@ Content-Type: application/json
 {"status":"cancelado"}
 ~~~
 
-Resposta 200: o pedido completo, agora com status cancelado.
-
-### Validações e decisões
-
-- Cliente: texto obrigatório, não vazio após trim(). Espaços nas extremidades são removidos.
-- Valor: número JSON finito maior que zero. Texto numérico, null, booleanos e valores negativos são rejeitados. Não há conversão automática de tipos ou arredondamento.
-- Tipo: exatamente entrega ou retirada.
-- Prioridade: exatamente normal ou alta; não altera a ordem da listagem.
-- Valores enumerados diferenciam maiúsculas/minúsculas e não têm espaços removidos.
-- ID: inteiro positivo seguro, em formato decimal sem zeros à esquerda. abc, 0, -1, 1.5 e 01 dão 400; um ID válido sem pedido correspondente dá 404.
-- ID e status inicial são definidos pelo servidor. Campos extras na criação são ignorados, inclusive id e status.
-- No PATCH, somente status é considerado; não é possível trocar cliente ou valor.
-- No PATCH, o ID e a existência são verificados antes do corpo. ID inexistente com corpo semanticamente inválido dá 404. JSON malformado é detectado antes das rotas e dá 400.
-- Corpo ausente, array, JSON malformado ou campos inválidos dão 400 com mensagem explicativa.
-- Limite do corpo: 16 KB. Excedê-lo dá 413.
-- Rota desconhecida dá 404 em JSON.
-- Erro inesperado dá 500 com mensagem genérica; detalhes são registrados no servidor.
-
 ### Transições de status
 
 | Estado atual | Próximos estados permitidos |
@@ -99,23 +89,7 @@ Reenviar o estado atual é permitido e retorna 200 sem alteração (idempotênci
 Não é permitido pular etapas, voltar etapas, cancelar após envio ou reabrir pedidos finalizados.
 A mesma sequência se aplica a entrega e retirada: neste projeto, enviado significa disponibilizado/encaminhado para o cliente, inclusive na retirada. Essa simplificação mantém um fluxo único e explícito.
 
-## Arquitetura e padrão implementado
 
-~~~text
-src/
-  app.js                         composição da aplicação; não abre porta
-  server.js                      configuração da porta e inicialização
-  routes/pedidosRoutes.js        métodos e caminhos HTTP
-  controllers/pedidosController.js leitura da requisição e resposta HTTP
-  services/pedidosService.js     validação e regras de negócio
-  repositories/pedidosRepository.js armazenamento em memória
-  errors/AppError.js             erro esperado com status HTTP
-  middlewares/errorHandler.js    tradução centralizada dos erros para JSON
-tests/                           testes de integração e de domínio
-postman/                         coleção importável
-evidencias/                      capturas reais do Postman
-docs/                            roteiro de estudo e entrega
-~~~
 
 O padrão é **arquitetura em camadas**, com um **Repository** simples para isolar a memória das regras de negócio.
 Fluxo: rota -> controller -> service -> repository; erros seguem para o middleware.
@@ -126,23 +100,7 @@ O repository não conhece HTTP e devolve cópias dos dados para evitar alteraç�
 Factories criam uma memória independente por instância e permitem injetar um repository nos testes.
 As operações são síncronas; erros lançados são capturados pelo Express e chegam ao middleware.
 
-## Testes automatizados
-
-~~~sh
-npm test
-npm run test:coverage
-~~~
-
-Jest executa os testes; Supertest envia requisições à aplicação Express sem exigir servidor na porta 3000.
-Resultado verificado nesta entrega: **75 testes aprovados**, em duas suítes.
-Cobrem criação, consulta, listagem, IDs, corpos inválidos, todas as 25 combinações de status, repetição de status, preservação de dados após erro, isolamento de memória e resposta 500.
-
-A cobertura medida foi 100% das linhas, funções, instruções e ramificações dos arquivos incluídos.
-O arquivo server.js é excluído da cobertura, pois apenas abre a porta; sua inicialização também foi conferida com npm start.
-Cobertura é uma medida auxiliar e não garante ausência de defeitos.
-O relatório HTML é gerado em coverage/lcov-report/index.html, ignorado pelo Git.
-
-## Testes manuais e evidências
+## Testes
 
 Importe postman/api-pedidos.postman_collection.json no Postman.
 A variável da coleção baseUrl já aponta para http://localhost:3000.
